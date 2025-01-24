@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -58,7 +59,9 @@ class _CreateTransactionScreenState extends State<CreateTransactionScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Transaction created successfully')),
       );
-      Navigator.pop(context, true); // Return to HomeScreen with success
+      // Return to HomeScreen with success
+      Get.back(result: true);
+      // Navigator.pop(context, true);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to create transaction')),

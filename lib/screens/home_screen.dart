@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:transaction_management_ui/screens/create_transaction.dart';
@@ -232,13 +233,16 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           // Navigate to CreateTransactionScreen
-          final bool? created = await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  CreateTransactionScreen(token: widget.token),
-            ),
-          );
+          final bool? created =
+              await Get.to(() => CreateTransactionScreen(token: widget.token));
+          //Get.to(CreateTransactionScreen(token: widget.token));
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) =>
+          //         CreateTransactionScreen(token: widget.token),
+          //   ),
+          // );
           if (created == true) {
             // Refresh transactions after creating a new one
             fetchTransactions();
